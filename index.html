@@ -1,24 +1,23 @@
+---
+layout: default
+---
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>MyWebsite</title>
-</head>
-<body style="background-color:lightgrey;">
+<div class="home">
 
-<h1>Andre Xian Ming Chang</h1>
-<p>
-  <a href="https://www.linkedin.com/in/andre-chang-9009bb97">Linked in</a><br>
-  <a href="cv-en.pdf">CV</a><br>
-  <a href="https://github.com/Andrechang">Github</a><br>
-  <a href="http://e-lab.github.io/">E-lab</a><br>
-</p>
+  <h1 class="page-heading">Posts</h1>
 
-<p>
-  MSc. student in Electrical and Computer Engineering at Purdue University under the supervision of Dr. Eugenio Culurciello<br>
-  Research interests in Hardware accelerator for Recurrent neural networks (RNNs) and Convolutional neural networks (CNNs)<br>
-  Keywords: FPGA, RNN, Embedded Systems, Machine Learning
-</p>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-</body>
-</html>
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
