@@ -1,14 +1,9 @@
 # Site Settings
-title: 'Andre Xian Ming Chang'
-description: 'Andre Chang site'
+title: 'Andre Chang'
+description: 'Dear blog...'
 url: 'http://andrechang.github.io' # the base hostname & protocol for your site
-footer_text: '
-  MSc. student in Electrical and Computer Engineering at Purdue West Lafayette
-  under the supervision of Dr. Eugenio Culurciello
-  Research interests in hardware acceleration for Recurrent neural networks
-  (RNNs).'
-
+footer_text: ''
 # Admin Settings
 admin_name: 'Andre Chang'
 admin_email: 'andrechang67@gmail.com'
-
+github_username: Andrechang

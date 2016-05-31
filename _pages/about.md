@@ -3,6 +3,8 @@ layout: inner
 title: About
 permalink: /about/
 ---
+Hi, I am Andre Chang and electrical engineer from Brazil. And Blahblah.
+MSc. student in Electrical and Computer Engineering at Purdue West Lafayette under the supervision of Dr. Eugenio Culurciello Research interests in hardware acceleration for Recurrent neural networks (RNNs).
 
 We never thought of findin' a place where we belong. Don't have to stand alone, we'll never let you fall. Don't need permission to decide what you believe. You gotta learn something when we meet you after school. I said jump, down on Jump Street. I said jump, down on Jump Street. Your friends will be there when your back is to the wall. You'll find you'll need us cause there's no one else to call. When it was hopeless a decision is what you need. You'd better be ready cause' your runnin' outta time. Say jump, 21 Jump, Street.
 

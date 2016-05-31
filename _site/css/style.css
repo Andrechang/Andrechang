@@ -5956,9 +5956,9 @@ a {
   outline: none !important;
   text-decoration: none !important;
   transition: all 225ms ease;
-  color: #FF7B7B; }
+  color: #007B7B; }
   a:hover {
-    color: #6165FF; }
+    color: #0065FF; }
 
 .btn {
   text-transform: uppercase;
@@ -5977,7 +5977,7 @@ nav.navbar {
     text-transform: none; }
     nav.navbar .navbar-brand i {
       transition: inherit;
-      color: #ff4545;
+      color: blue;
       transform: scale(1); }
     nav.navbar .navbar-brand:hover i {
       color: #ff6f6f;
@@ -6000,7 +6000,7 @@ h1.special {
   font-size: 69px;
   line-height: 69px;
   font-weight: 700;
-  color: #ff4545; }
+  color: blue; }
   h1.special span {
     display: inline-block;
     position: relative;

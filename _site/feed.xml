@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Andre Xian Ming Chang</title>
-    <description>Andre Chang site</description>
+    <title>Andre Chang</title>
+    <description>Dear blog...</description>
     <link>http://andrechang.github.io/</link>
     <atom:link href="http://andrechang.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 31 May 2016 08:18:28 -0400</pubDate>
-    <lastBuildDate>Tue, 31 May 2016 08:18:28 -0400</lastBuildDate>
+    <pubDate>Tue, 31 May 2016 09:47:59 -0400</pubDate>
+    <lastBuildDate>Tue, 31 May 2016 09:47:59 -0400</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -26,24 +26,6 @@
       </item>
     
       <item>
-        <title>Good to know in Vim</title>
-        <description>&lt;p&gt;Vim using tabs
-:tabe &amp;lt;file/path&amp;gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 31 May 2016 09:26:34 -0400</pubDate>
-        <link>http://andrechang.github.io/vim.html</link>
-        <guid isPermaLink="true">http://andrechang.github.io/vim.html</guid>
-        
-        <category>vim</category>
-        
-        
-        <category>_pages</category>
-        
-        <category>vim</category>
-        
-      </item>
-    
-      <item>
         <title>My First Video Post on Jekyll</title>
         <description>&lt;p&gt;Steve Austin: Astronaut. A man barely alive. Gentlemen… we can rebuild him. We have the technology. We have the capability to make the world’s first bionic man. Steve Austin will be that man. Better than he was before. Better. Stronger. Faster.&lt;/p&gt;
 
@@ -94,60 +76,6 @@
       </item>
     
       <item>
-        <title>My First Video Post on Jekyll</title>
-        <description>&lt;p&gt;Steve Austin: Astronaut. A man barely alive. Gentlemen… we can rebuild him. We have the technology. We have the capability to make the world’s first bionic man. Steve Austin will be that man. Better than he was before. Better. Stronger. Faster.&lt;/p&gt;
-
-&lt;p&gt;My name is Rhoda Morgenstern. I was born in the Bronx, New York in December of 1941. I’ve always felt responsible for World War II. The first thing I remember liking that liked me back was food. I had a bad puberty; it lasted seventeen years. I’m a high school graduate. I went to art school. My entrance exam was on a book of matches. I decided to move out of the house when I was twenty-four. My mother still refers to this as the time I ran away from home. Eventually, I ran to Minneapolis, where it’s cold and I figured I’d keep better. Now I’m back in Manhattan. New York, this is your last chance!&lt;/p&gt;
-
-&lt;p&gt;Dr. David Banner: physician; scientist. Searching for a way to tap into the hidden strengths that all humans have… then an accidental overdose of gamma radiation alters his body chemistry. And now when David Banner grows angry or outraged, a startling metamorphosis occurs. The creature is driven by rage and pursued by an investigative reporter. The creature is wanted for a murder he didn’t commit. David Banner is believed to be dead, and he must let the world think that he is dead, until he can find a way to control the raging spirit that dwells within him.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 31 Aug 2015 09:26:34 -0400</pubDate>
-        <link>http://andrechang.github.io/my-first-video-post.html</link>
-        <guid isPermaLink="true">http://andrechang.github.io/my-first-video-post.html</guid>
-        
-        <category>mars</category>
-        
-        <category>videos</category>
-        
-        
-        <category>_pages</category>
-        
-        <category>blog</category>
-        
-        <category>development</category>
-        
-      </item>
-    
-      <item>
-        <title>My First Post on Jekyll</title>
-        <description>&lt;p&gt;Steve Austin: Astronaut. A man barely alive. Gentlemen… we can rebuild him. We have the technology. We have the capability to make the world’s first bionic man. Steve Austin will be that man. Better than he was before. Better. Stronger. Faster.&lt;/p&gt;
-
-&lt;p&gt;My name is Rhoda Morgenstern. I was born in the Bronx, New York in December of 1941. I’ve always felt responsible for World War II. The first thing I remember liking that liked me back was food. I had a bad puberty; it lasted seventeen years. I’m a high school graduate. I went to art school. My entrance exam was on a book of matches. I decided to move out of the house when I was twenty-four. My mother still refers to this as the time I ran away from home. Eventually, I ran to Minneapolis, where it’s cold and I figured I’d keep better. Now I’m back in Manhattan. New York, this is your last chance!&lt;/p&gt;
-
-&lt;p&gt;Dr. David Banner: physician; scientist. Searching for a way to tap into the hidden strengths that all humans have… then an accidental overdose of gamma radiation alters his body chemistry. And now when David Banner grows angry or outraged, a startling metamorphosis occurs. The creature is driven by rage and pursued by an investigative reporter. The creature is wanted for a murder he didn’t commit. David Banner is believed to be dead, and he must let the world think that he is dead, until he can find a way to control the raging spirit that dwells within him.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 31 Aug 2015 09:26:34 -0400</pubDate>
-        <link>http://andrechang.github.io/example-post.html</link>
-        <guid isPermaLink="true">http://andrechang.github.io/example-post.html</guid>
-        
-        <category>cats</category>
-        
-        <category>dogs</category>
-        
-        <category>code</category>
-        
-        
-        <category>_pages</category>
-        
-        <category>blog</category>
-        
-        <category>development</category>
-        
-      </item>
-    
-      <item>
         <title>My First Normal Post on Jekyll</title>
         <description>&lt;p&gt;Steve Austin: Astronaut. A man barely alive. Gentlemen… we can rebuild him. We have the technology. We have the capability to make the world’s first bionic man. Steve Austin will be that man. Better than he was before. Better. Stronger. Faster.&lt;/p&gt;
 
@@ -166,34 +94,6 @@
         
         <category>javascript</category>
         
-        
-        <category>blog</category>
-        
-        <category>development</category>
-        
-      </item>
-    
-      <item>
-        <title>My First Normal Post on Jekyll</title>
-        <description>&lt;p&gt;Steve Austin: Astronaut. A man barely alive. Gentlemen… we can rebuild him. We have the technology. We have the capability to make the world’s first bionic man. Steve Austin will be that man. Better than he was before. Better. Stronger. Faster.&lt;/p&gt;
-
-&lt;p&gt;My name is Rhoda Morgenstern. I was born in the Bronx, New York in December of 1941. I’ve always felt responsible for World War II. The first thing I remember liking that liked me back was food. I had a bad puberty; it lasted seventeen years. I’m a high school graduate. I went to art school. My entrance exam was on a book of matches. I decided to move out of the house when I was twenty-four. My mother still refers to this as the time I ran away from home. Eventually, I ran to Minneapolis, where it’s cold and I figured I’d keep better. Now I’m back in Manhattan. New York, this is your last chance!&lt;/p&gt;
-
-&lt;p&gt;Dr. David Banner: physician; scientist. Searching for a way to tap into the hidden strengths that all humans have… then an accidental overdose of gamma radiation alters his body chemistry. And now when David Banner grows angry or outraged, a startling metamorphosis occurs. The creature is driven by rage and pursued by an investigative reporter. The creature is wanted for a murder he didn’t commit. David Banner is believed to be dead, and he must let the world think that he is dead, until he can find a way to control the raging spirit that dwells within him.&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 15 Aug 2015 09:26:34 -0400</pubDate>
-        <link>http://andrechang.github.io/my-first-normal-post.html</link>
-        <guid isPermaLink="true">http://andrechang.github.io/my-first-normal-post.html</guid>
-        
-        <category>html</category>
-        
-        <category>css</category>
-        
-        <category>javascript</category>
-        
-        
-        <category>_pages</category>
         
         <category>blog</category>
         
