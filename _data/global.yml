@@ -1,10 +1,14 @@
 # Site Settings
-title: 'Scotch Jekyll Bootstrap'
-description: 'An Open-Source Bootstrap 3 Jekyll Theme by Scotch'
-url: 'http://scotch-io.github.io' # the base hostname & protocol for your site
-footer_text: 'This text is footer text. Footer text goes here.'
+title: 'Andre Xian Ming Chang'
+description: 'Andre Chang site'
+url: 'http://andrechang.github.io' # the base hostname & protocol for your site
+footer_text: '
+  MSc. student in Electrical and Computer Engineering at Purdue West Lafayette
+  under the supervision of Dr. Eugenio Culurciello
+  Research interests in hardware acceleration for Recurrent neural networks
+  (RNNs).'
 
 # Admin Settings
-admin_name: 'Nicholas Cerminara'
-admin_email: 'nick@scotch.io'
+admin_name: 'Andre Chang'
+admin_email: 'andrechang67@gmail.com'
 

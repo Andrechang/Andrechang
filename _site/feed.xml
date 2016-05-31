@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Scotch Jekyll Bootstrap</title>
-    <description>An Open-Source Bootstrap 3 Jekyll Theme by Scotch</description>
-    <link>http://scotch-io.github.io/</link>
-    <atom:link href="http://scotch-io.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 31 May 2016 06:40:32 -0400</pubDate>
-    <lastBuildDate>Tue, 31 May 2016 06:40:32 -0400</lastBuildDate>
+    <title>Andre Xian Ming Chang</title>
+    <description>Andre Chang site</description>
+    <link>http://andrechang.github.io/</link>
+    <atom:link href="http://andrechang.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 31 May 2016 06:57:33 -0400</pubDate>
+    <lastBuildDate>Tue, 31 May 2016 06:57:33 -0400</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -19,8 +19,8 @@
 
 </description>
         <pubDate>Mon, 31 Aug 2015 09:26:34 -0400</pubDate>
-        <link>http://scotch-io.github.io/my-first-video-post.html</link>
-        <guid isPermaLink="true">http://scotch-io.github.io/my-first-video-post.html</guid>
+        <link>http://andrechang.github.io/my-first-video-post.html</link>
+        <guid isPermaLink="true">http://andrechang.github.io/my-first-video-post.html</guid>
         
         <category>mars</category>
         
@@ -43,8 +43,8 @@
 
 </description>
         <pubDate>Mon, 31 Aug 2015 09:26:34 -0400</pubDate>
-        <link>http://scotch-io.github.io/example-post.html</link>
-        <guid isPermaLink="true">http://scotch-io.github.io/example-post.html</guid>
+        <link>http://andrechang.github.io/example-post.html</link>
+        <guid isPermaLink="true">http://andrechang.github.io/example-post.html</guid>
         
         <category>cats</category>
         
@@ -69,8 +69,8 @@
 
 </description>
         <pubDate>Sat, 15 Aug 2015 09:26:34 -0400</pubDate>
-        <link>http://scotch-io.github.io/my-first-normal-post.html</link>
-        <guid isPermaLink="true">http://scotch-io.github.io/my-first-normal-post.html</guid>
+        <link>http://andrechang.github.io/my-first-normal-post.html</link>
+        <guid isPermaLink="true">http://andrechang.github.io/my-first-normal-post.html</guid>
         
         <category>html</category>
         
