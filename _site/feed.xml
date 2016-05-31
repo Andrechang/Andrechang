@@ -5,9 +5,25 @@
     <description>Andre Chang site</description>
     <link>http://andrechang.github.io/</link>
     <atom:link href="http://andrechang.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 31 May 2016 07:55:36 -0400</pubDate>
-    <lastBuildDate>Tue, 31 May 2016 07:55:36 -0400</lastBuildDate>
+    <pubDate>Tue, 31 May 2016 08:06:01 -0400</pubDate>
+    <lastBuildDate>Tue, 31 May 2016 08:06:01 -0400</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Good to know in Vim</title>
+        <description>&lt;p&gt;Vim using tabs
+:tabe &amp;lt;file/path&amp;gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 31 May 2016 09:26:34 -0400</pubDate>
+        <link>http://andrechang.github.io/vim.html</link>
+        <guid isPermaLink="true">http://andrechang.github.io/vim.html</guid>
+        
+        <category>vim</category>
+        
+        
+        <category>vim</category>
+        
+      </item>
     
       <item>
         <title>My First Video Post on Jekyll</title>
