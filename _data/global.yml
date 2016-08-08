@@ -1,9 +1,0 @@
-# Site Settings
-title: 'Andre Chang'
-description: 'Dear blog...'
-url: 'http://andrechang.github.io' # the base hostname & protocol for your site
-footer_text: ''
-# Admin Settings
-admin_name: 'Andre Chang'
-admin_email: 'andrechang67@gmail.com'
-github_username: Andrechang

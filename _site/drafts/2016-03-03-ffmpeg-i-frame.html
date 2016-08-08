@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Use FFmpeg to Capture I Frames of Video - Andrechang</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll" />
+        <meta name="author" content="Andrechang" />
+        <meta name="description" content="Andrechang's blog" />
+        <meta name="keywords" content="" />
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+        <link rel="shortcut icon" href="/images/shortcut.jpg" type="image/x-icon" />
+        <!-- font-awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.useso.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+
+        
+        
+    </head>
+
+    <body>
+    <!-- <body  data-spy="scroll" data-target=".toc" data-offset="20"> -->
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href=""><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/index.html">
+                                HOME
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/categories.html">
+                                CATEGORIES
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/about.html">
+                                ABOUT ME
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="/links.html">
+                                LINKS
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="https://www.facebook.com/" target="_blank"><i class="icon-facebook"></i></a>
+                    
+                    <a href="https://github.com/Andrechang/" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <!-- toc -->
+                <!-- 
+                <div class="main-left">
+                    <div id="toc"></div>
+                </div>
+                 -->
+
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">Use FFmpeg to Capture I Frames of Video</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">03 Mar 2016</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="/categories.html#computer_vision-ref" >computer_vision</a></span>
+    </div>
+    <div id="toc"></div>
+    <p>First we need to download ffmpeg.exe from: <a href="http://ffmpeg.zeranoe.com/builds/">http://ffmpeg.zeranoe.com/builds/</a></p>
+
+<p>Use the commands below to extract all key frames (I, P, B) and their corresponding timecodes:</p>
+
+<p>On Linux, it can be an one-off accomplishment:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ffmpeg -i yourvideo.mp4 -vf <span class="k">select</span><span class="o">=</span><span class="s2">"eq(pict_type</span><span class="se">\,</span><span class="s2">PICT_TYPE_I)"</span> -vsync 2 -s 160x90 -f image2 thumbnails-%02d.jpeg -loglevel debug 2&gt;&amp;1 | grep <span class="s2">"pict_type:I -&gt; select:1"</span> | cut -d <span class="s2">" "</span> -f 6 - &gt; ffmpeg_decode-info.txt</code></pre></figure>
+
+<p>On Windows:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ffmpeg.exe -i yourvideo.mp4 -vf <span class="k">select</span><span class="o">=</span><span class="s1">'eq(pict_type\,I)'</span> -vsync 2 -s 160x90 -f image2 thumbnails-%02d.jpeg -loglevel debug 2&gt;&amp;1 | findstr <span class="s2">"pict_type:I"</span> &gt; ffmpeg_decode_info.txt</code></pre></figure>
+
+<p>Now we will get a text file filled with formated text lines like:</p>
+
+<p>[Parsed_select_0 @ 05253d60] n:134.000000 pts:135000.000000 t:5.400000 key:1 interlace_type:P pict_type:I scene:nan -&gt; select:1.000000 select_out:0</p>
+
+<p>Since we need only I frames’ index, we can split each text line and get the target columns:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">(</span><span class="k">for</span> /f <span class="s2">"tokens=5 delims= "</span> %i <span class="k">in</span> <span class="o">(</span>ffmpeg_decode_info.txt<span class="o">)</span> DO <span class="nb">echo</span> %i<span class="o">)</span> &gt; ffmpeg_iframe_index.txt</code></pre></figure>
+
+<p>(Note: the file name “ffmpeg_decode_info.txt” should not contain any space. 
+Otherwise we should add another option <code class="highlighter-rouge">usebackq</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">(</span><span class="k">for</span> /f <span class="s2">"usebackq tokens=5 delims= "</span> %i <span class="k">in</span> <span class="o">(</span><span class="s2">"ffmpeg decode info.txt"</span><span class="o">)</span> DO <span class="nb">echo</span> %i<span class="o">)</span> &gt; ffmpeg_iframe_index.txt</code></pre></figure>
+
+<p>)</p>
+
+<p>Sometimes we would find some strange lines insert to ffmpeg_decode_info.txt 
+(I don’t know what it means, its insert location even whether it is inserted or not is unpredictable)</p>
+
+<p>frame=   57 fps=2.7 q=2.1 size=N/A time=00:00:54.01 bitrate=N/A speed=2.56x</p>
+
+<p>Conflict will appear if we don’t add some special handling. 
+Usually this line is appended with the normal text line that we need, just like below:</p>
+
+<p>frame=   57 fps=2.7 q=2.1 size=N/A time=00:00:54.01 bitrate=N/A speed=2.56x   <strong>\r</strong>[Parsed_select_0 @ 05253d60] n:134.000000 pts:135000.000000 t:5.400000 key:1 interlace_type:P pict_type:I scene:nan -&gt; select:1.000000 select_out:0</p>
+
+<p>Split it by <strong>\r</strong> will be Okay.</p>
+
+<h1 id="reference">Reference</h1>
+
+<p><a href="http://forum.doom9.org/archive/index.php/t-163553.html">http://forum.doom9.org/archive/index.php/t-163553.html</a></p>
+
+    <div class="bdsharebuttonbox">
+        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+        <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+        <a href="#" class="bds_mail" data-cmd="mail" title="分享到邮件分享"></a>
+        <a href="#" class="bds_more" data-cmd="more"></a>
+    </div>
+    <nav class="article-previous fn-clear">
+        
+        
+    </nav>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'andrechang67';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+                </div>
+
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="/images/header.jpg" />
+                            </div>
+                            <div class="det-text">
+                                <p>Ola</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="/computer_vision/2016/03/03/example.html" title="fgsfgsf" rel="bookmark">fgsfgsf</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        
+        <div class="foot">
+            <div class="footer">
+                <p>A blog template forked from <a href="https://github.com/zJiaJun/zJiaJun.github.io" target="_blank">zJiaJun</a>. Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.</p>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="http://ajax.useso.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+        
+        
+        <!-- mathjax -->
+        <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+        <!-- Search in CSE home -->
+        <script>
+        (function() {
+            var cx = '003287793477459687163:n59nxpgejxy';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+        </script>
+        <gcse:search></gcse:search>
+
+        <!-- jekyll-table-of-contents -->
+        
+        <!-- <script src="/javascript/jquery-2.1.4.min.js" type="text/javascript"></script> -->
+        <script src="/javascript/toc.js" type="text/javascript"></script>
+        <!--
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+         -->
+
+        <!-- Script to display table of content -->
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('#toc').toc({ showEffect: 'slideDown' });
+        }); </script>
+        
+    </body>
+</html>
