@@ -44,7 +44,7 @@ timezone:      null
 title: Andrechang
 description: Andrechang's blog
 keywords: Deep Learning
-#url: http://handong1587.github.io
+url: http://andrechang.github.io
 feed: /atom.xml
 favicon: /images/shortcut.jpg
 
