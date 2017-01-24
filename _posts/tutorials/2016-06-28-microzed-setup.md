@@ -62,7 +62,7 @@ Or for Vivado
 
 
 ``` bash
-export XILINX_SDK=/opt/Xilinx/SDK/2014.2
+export XILINX_SDK=/opt/Xilinx/SDK/2015.4
 export PATH=$XILINX_SDK/gnu/arm/lin/bin:$PATH
 ```
 
@@ -133,7 +133,7 @@ ensure the SD card boots from the rootfs on the SD card.
 
 ``` bash
 echo '
-diff --git a/include/configs/zynq_common.h b/include/configs/zynq-common.h
+diff --git a/include/configs/zynq-common.h b/include/configs/zynq-common.h
 --- a/include/configs/zynq-common.h
 +++ b/include/configs/zynq-common.h
 @@ -241,7 +241,7 @@
@@ -158,6 +158,11 @@ Get rid of the line that has -
 
 and add the line that has +
 
+Change the MACaddr of the device in include/configs/zynq-common.h
+
+``` bash
+"ethaddr=00:0a:35:02:95:e3\0"
+```
 
 ### Building u-boot tools
 http://www.wiki.xilinx.com/Build+U-Boot
@@ -187,17 +192,18 @@ export PATH=$PWD/u-boot-xlnx/tools:$PATH
 See http://www.wiki.xilinx.com/Build+kernel
 
 
-add a line to /arch/arm/configs/xilinx_zynq_defconfig:
-
+Make sure that CMA config are correct in /arch/arm/configs/xilinx_zynq_defconfig
+and in .config file.
 
 ``` bash
 CONFIG_DMA_CMA=y
+CONFIG_CMA_SIZE_MBYTES=128
 ```
 Then build kernel with:
 ``` bash
-make ARCH=arm xilinx_zynq_defconfig
-make ARCH=arm menuconfig
-make ARCH=arm UIMAGE_LOADADDR=0x8000 uImage
+make -j2 ARCH=arm xilinx_zynq_defconfig
+make -j2 ARCH=arm menuconfig
+make -j2 ARCH=arm UIMAGE_LOADADDR=0x8000 uImage
 ```
 
 
@@ -271,7 +277,7 @@ diff --git a/arch/arm/boot/dts/zynq-zed.dts b/arch/arm/boot/dts/zynq-zed.dts
 	};
  	chosen {
 -		bootargs = "console=ttyPS0,115200 root=/dev/ram rw earlyprintk";
-+		bootargs = "cma=64M console=ttyPS0,115200 root=/dev/mmcblk0p2 rw earlyprintk rootfstype=ext4 rootwait devtmpfs.mount=0";
++		bootargs = "cma=128M console=ttyPS0,115200 root=/dev/mmcblk0p2 rw earlyprintk rootfstype=ext4 rootwait devtmpfs.mount=0";
  		linux,stdout-path = "/axi@0/serial@e0001000";
  	} ;
     };
@@ -292,7 +298,7 @@ make zynq-zed.dtb
 ### Modifying Devicetree for AXIS
 
 The following AXIS device node needs to be added to the Zynq devicetree to expose the new hardware to the AXIS driver.
-
+Add this code to arch/arm/boot/dts/zynq-7000.dtsi inside of amba.
 
 ``` bash
 axis: axis@43C00000 {
@@ -305,6 +311,8 @@ axis: axis@43C00000 {
     xlnx,slv-dwidth = <0x20>;
 };
 ```
+Or
+
 Source code for a usable and tested devicetree has been placed in the zynq-axis/util directory. 
 It is an altered version of the 'arch/arm/boot/dts/zynq-7000.dtsi' file found in the linux-xlnx Xilinx repo, 
 master branch commit (da2d296bb6b89f7bc7644f6b552b9766ac1c17d5).
@@ -384,6 +392,11 @@ As of writing this was the latest "desktop" release URL is.
 wget https://releases.linaro.org/archive/12.11/ubuntu/precise-images/ubuntu-desktop/linaro-precise-ubuntu-desktop-20121124-560.tar.gz
 ```
 
+or 
+
+```bash
+wget https://releases.linaro.org/14.10/ubuntu/trusty-images/developer/linaro-trusty-developer-20141024-684.tar.gz
+```
 
 ## Copy files to SD Card
 
@@ -832,9 +845,70 @@ The above was taken from the following Xilinx forum discussion.
 
 http://forums.xilinx.com/t5/Embedded-Linux/System-clock-is-slow/m-p/411993/highlight/true#M7830
 
-
-
 ## Linux setup
+
+## thnets
+dependencies:
+sudo apt-get install libjpeg-dev
+sudo apt-get install libpng-dev
+
+## update gcc 
+
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install gcc-4.9 g++-4.9
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
+
+## auto mound sdcard
+Add mount /dev/mmcblk0p1 /root/sdcard to .bashrc file
+
+##ssh
+Install ssh stuff:
+apt-get install -y dropbear
+
 sudo apt-get install openssh-client openssh-server
 
-passwd
+Change passwd for linaro and root account.
+The default password is: linaro
+sudo passwd
+
+##torch
+install torch: follow this http://torch.ch/docs/getting-started.html
+But it gives error.
+Them change ubuntu to linaro in the install-deps and install libzmq-dev and remove libzmq3-dev.
+
+vim install-deps
+:%s/ubuntu/linaro/gc
+:%s/libzmq3-dev/libzmq-dev/gc
+
+##ssh static ip
+https://www.maketecheasier.com/static-ip-address-setup-ssh-on-raspberry-pi/
+https://www.cyberciti.biz/faq/linux-configure-a-static-ip-address-tutorial/
+https://www.howtoforge.com/linux-basics-set-a-static-ip-on-ubuntu
+
+Need to change /etc/network/interfaces and /etc/resolv.conf
+
+First find a ip address not used. (see nmap http://www.cyberciti.biz/networking/nmap-command-examples-tutorials/)
+
+nmap -sP 192.168.1.0/24
+
+ip address that don't have dhcp and no one is using.
+
+Then, find the line which reads iface eth0 inet dhcp and replace it with:
+sudo vim /etc/network/interfaces
+
+auto eth0
+iface eth0 inet static
+address 192.168.1.20
+netmask 255.255.255.0
+gateway 192.168.1.1
+
+## Rename System
+
+Edit /etc/hostname to be the new hostname
+
+and edit last line in /etc/hosts
+
+127.0.1.1       <new hostname>
+
+##
