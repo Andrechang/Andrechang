@@ -1,8 +1,8 @@
 ---
 layout: inner
 title: 'Aprendendo a aprender'
-date: 2016-08-04 13:26:34
-categories: aprendizado de maquina
+date: 2016-10-04 13:26:34
+categories: tutorial
 tags: Torch7 Eletronica Computacao
 lead_text: 'Aprendendo a aprender.'
 ---

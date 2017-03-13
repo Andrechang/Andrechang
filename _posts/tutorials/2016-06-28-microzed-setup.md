@@ -1,7 +1,7 @@
 ---
 layout: inner
 title: 'MicroZedboard setup'
-date: 2016-08-31 13:26:34
+date: 2016-09-01 13:26:34
 categories: Getting started
 tags: FPGA Zedboard
 featured_image: ''
@@ -37,9 +37,9 @@ git clone https://github.com/Xilinx/linux-xlnx
 
 Both the u-boot and the kernel will need to be built using the cross compile
 tools. These tools should have been installed as part of the Xilinx ISE
-package. 
+package.
 
-For vivado these tools where installed with SDK. Make sure to have SDK installed. 
+For vivado these tools where installed with SDK. Make sure to have SDK installed.
 
 ### Tool Location Variable
 
@@ -123,8 +123,8 @@ cd u-boot-xlnx
 ### Patch boot options
 
 
-We don't want a ramdisk rootfs because the system (OS kernel and applications) is copied from SDcard to a RAM memory during boot. 
-And all the work done on the system is saved on a RAM, which means that it will disappear once we turn off the zedboard. 
+We don't want a ramdisk rootfs because the system (OS kernel and applications) is copied from SDcard to a RAM memory during boot.
+And all the work done on the system is saved on a RAM, which means that it will disappear once we turn off the zedboard.
 To avoid this, we want to boot and run the system on SDcard so that we can save our modifications.
 
 
@@ -153,7 +153,7 @@ diff --git a/include/configs/zynq-common.h b/include/configs/zynq-common.h
 ' | git apply -
 ```
 
-Get rid of the line that has - 
+Get rid of the line that has -
 
 
 and add the line that has +
@@ -177,7 +177,7 @@ make
 ```
 
 Only needed to build the kernel.
-After building the u-boot, the target u-boot elf-file is created in the top level source directory, named 'u-boot'. 
+After building the u-boot, the target u-boot elf-file is created in the top level source directory, named 'u-boot'.
 Additionally in the tools/ directory the 'mkimage' utility is created, which is used in other tasks to wrap images into u-boot format.
 To make mkimage available in other steps, it is recommended to add the tools directory to your $PATH.
 
@@ -219,23 +219,23 @@ The gcc compiler versions below are not supported:
  * GCC 3.0, 3.1: general bad code generation.
  * GCC 3.2.0: incorrect function argument offset calculation.
  * GCC 3.2.x: miscompiles NEW_AUX_ENT in fs/binfmt_elf.c (http://gcc.gnu.org/PR8896) and incorrect structure initialisation in fs/jffs2/erase.c
-       
- 
+
+
  * GCC 4.8.0-4.8.2: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=58854 miscompiles find_get_entry(), and can result in EXT3 and EXT4 filesystem corruption (possibly other FS too).
 
 
-Make sure the gcc compiler version is not 4.8.1 or 4.8.2 
+Make sure the gcc compiler version is not 4.8.1 or 4.8.2
 
 
-``` bash 
+``` bash
 gcc -v
 ```
 
 
-If it is then try to change the default gcc to a lower version, by switching the gcc link "/usr/bin/gcc": 
+If it is then try to change the default gcc to a lower version, by switching the gcc link "/usr/bin/gcc":
 
 
-``` bash 
+``` bash
 apt-get install gcc-4.7
 sudo rm /usr/bin/gcc
 sudo ln -s /usr/bin/gcc-4.7 /usr/bin/gcc
@@ -251,7 +251,7 @@ asm-offses.c will output an error (buggy compiler) if arm-xilinx-linux-gnueabi-g
 Check with:
 
 
-``` bash 
+``` bash
 arm-xilinx-linux-gnueabi-gcc -v
 ```
 
@@ -262,7 +262,7 @@ Patch the default zedboard device tree source file mount the root file system
 from the second partition of the SD card instead of ram.
 
 
-Change the file linux-xlnx/arch/arm/boot/dts/zynq-zed.dts 
+Change the file linux-xlnx/arch/arm/boot/dts/zynq-zed.dts
 
 
 ``` bash
@@ -313,12 +313,12 @@ axis: axis@43C00000 {
 ```
 Or
 
-Source code for a usable and tested devicetree has been placed in the zynq-axis/util directory. 
-It is an altered version of the 'arch/arm/boot/dts/zynq-7000.dtsi' file found in the linux-xlnx Xilinx repo, 
+Source code for a usable and tested devicetree has been placed in the zynq-axis/util directory.
+It is an altered version of the 'arch/arm/boot/dts/zynq-7000.dtsi' file found in the linux-xlnx Xilinx repo,
 master branch commit (da2d296bb6b89f7bc7644f6b552b9766ac1c17d5).
 
 
-Once the kernel has been compiled for the Zynq, place the altered 'zynq-7000-dtsi' file into the kernel 'arch/arm/boot/dts' directory. 
+Once the kernel has been compiled for the Zynq, place the altered 'zynq-7000-dtsi' file into the kernel 'arch/arm/boot/dts' directory.
 Then compile the new devicetree, for the Zedboard run the following command.
 
 
@@ -392,7 +392,7 @@ As of writing this was the latest "desktop" release URL is.
 wget https://releases.linaro.org/archive/12.11/ubuntu/precise-images/ubuntu-desktop/linaro-precise-ubuntu-desktop-20121124-560.tar.gz
 ```
 
-or 
+or
 
 ```bash
 wget https://releases.linaro.org/14.10/ubuntu/trusty-images/developer/linaro-trusty-developer-20141024-684.tar.gz
@@ -408,7 +408,7 @@ sudo tar --strip-components=3 -C /media/rootfs -xzpf linaro-precise-ubuntu-deskt
 ```
 
 
-After following the section "2. Prepare U-Boot, Linux Kernel and Device tree", 
+After following the section "2. Prepare U-Boot, Linux Kernel and Device tree",
 you can copy uImage and devicetree file to BOOT partition of the SDcard
 
 
@@ -423,15 +423,15 @@ copy zynq-zed.dtb file from linux-xlnx/arch/arm/boot/dts/ to /media/BOOT/ and re
 Look into xilinx document chapter 5 http://forums.xilinx.com/xlnx/attachments/xlnx/ELINUX/8467/1/zedboard_CTT_v2013_2_130807.pdf
 
 In order to relate the software (Linux) with the hardware PL (programable logic) that you created,
-we need to create a FSBL(first state boot loader) application in Xilinx SDK program. 
-Thus, we need the hardware from  section "1. Hardware". 
+we need to create a FSBL(first state boot loader) application in Xilinx SDK program.
+Thus, we need the hardware from  section "1. Hardware".
 Remember that the Vivado project is in /zynq-axis-master/syn/scratch/project-zedboard_axis/
 But, the generated bitstream file is in /zynq-axis-master/zedboard_axis.bit
 
 
-In the Vivado program, after the Bitstream generation completes, 
+In the Vivado program, after the Bitstream generation completes,
 you need to export the hardware File > Export > Export Hardware
-(make sure that you enable the "Include Bitstream" option). 
+(make sure that you enable the "Include Bitstream" option).
 
 
 Then launch SDK.
@@ -444,7 +444,7 @@ click Next.
 
 Select Zynq FSBL in the Template list and keep the remaining default options.
 The Location of your project, the hardware platform used, and the processor are
-visible in this window. 
+visible in this window.
 
 
 Click Finish to generate the FSBL.
@@ -462,10 +462,10 @@ your_project_path / project_name.sdk / zynq_fsbl_0 / Debug /
 To generate the last file need for the SDcard, we need to get copy of:
 
 * system.bit (zedboard_axis.bit - bitfile generated in Vivado),
-* u-boot.elf (in u-boot-xlnx folder. Need to rename u-boot to u-boot.elf) and 
+* u-boot.elf (in u-boot-xlnx folder. Need to rename u-boot to u-boot.elf) and
 * zynq_fsbl.elf (created using Xilinx SDK).
 
-Then create a .bif file.  
+Then create a .bif file.
 
 ```bash
 echo -n 'the_ROM_image:
@@ -509,10 +509,10 @@ Kernel modules need to be built against the version of the kernel it will be ins
 https://github.com/Xilinx/linux-xlnx.git
 
 
-The driver module can be compiling outside of the Linux kernel source tree. 
-A variable 'KDIR' in the Makefile is used to point to the kernel source directory. 
-The default value has it pointing to the default Linux install location for kernel sources. 
-However, if cross compiling or if the sources are in a non-default location the value can be overridden using 
+The driver module can be compiling outside of the Linux kernel source tree.
+A variable 'KDIR' in the Makefile is used to point to the kernel source directory.
+The default value has it pointing to the default Linux install location for kernel sources.
+However, if cross compiling or if the sources are in a non-default location the value can be overridden using
 an exported environmental variable or as an argument passes into the make command.
 Assuming that folder linux-xlnx and zynq-axis are in the same directory.
 
@@ -530,7 +530,7 @@ make KDIR=../../linux-xlnx
 ```
 After compiling the driver, you need to have the zynq-axis files on the zedboard (embedded linux).
 
-One way to do this is to copy the folder zynq-axis to the rootfs partition of the SDcard. 
+One way to do this is to copy the folder zynq-axis to the rootfs partition of the SDcard.
 
 
 The following sections are done in the embedded linux through a serial connection (eg. gtkterm or putty).
@@ -852,7 +852,7 @@ dependencies:
 sudo apt-get install libjpeg-dev
 sudo apt-get install libpng-dev
 
-## update gcc 
+## update gcc
 
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update

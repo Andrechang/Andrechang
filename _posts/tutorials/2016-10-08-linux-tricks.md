@@ -1,9 +1,9 @@
 ---
 layout: inner
-title: 'My First Normal Post on Jekyll'
+title: 'Virtual Box'
 date: 2016-10-08 13:26:34
-categories: blog development
-tags: html css javascript
+categories: setup
+tags: virtual_machine
 lead_text: '.'
 ---
 
