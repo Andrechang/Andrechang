@@ -1,1 +1,0 @@
-A github blog theme forked from [zJiaJun](https://github.com/zJiaJun): [https://github.com/zJiaJun/zJiaJun.github.io](https://github.com/zJiaJun/zJiaJun.github.io) .

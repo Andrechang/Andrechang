@@ -1,32 +1,102 @@
----
-layout: default
-title: Andre Chang's blog
-keywords: Deep Learning/Machine Learning
----
-{% for post in paginator.posts %}
-    <div class="article">
-        <h3 class="title"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h3>
-        <article class="rexp">
-            <p>{{ post.excerpt }}</p>
-        </article>
-        <a href="{{ site.url }}{{ post.url }}" class="more"><i class="icon-link"></i></a>
-        <div class="info">
-            <span class="info-title"><i class="icon-calendar"></i> Published: </span>
-            <span class="info-date">{{ post.date | date_to_string }}</span>
-        </div>
-    </div>
-{% endfor %}
-{% if paginator.total_pages > 1 %}
-    <nav class="pagination fn-clear">
-        <span class="pagination-icon"><i class=" icon-copy"></i></span>
-        <ul class="pagination-list">
-            {% for page in (1..paginator.total_pages) %}
-                {% if page == paginator.page %}
-                    <li class="current"><a href="javascript:void(0);">{{ page }}</a></li>
-                {% else %}
-                    <li><a href="{{ site.url }}/{%if page > 1 %}page{{ page }}/{% endif %}">{{ page }}</a></li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </nav>
-{% endif %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Andre Chang</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.poptrox.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+
+				<!-- Logo -->
+					<h1 id="logo"><a href="#">Andre Chang</a></h1>
+				
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro">Intro</a></li>
+							<li><a href="#one">What I Do</a></li>
+							<li><a href="#work">My Work</a></li>
+						</ul>
+					</nav>
+
+			</header>
+			
+		<!-- Intro -->
+			<section id="intro" class="main style1 dark fullscreen">
+				<div class="content container small">
+					<header>
+						<h2>Hi.</h2>
+					</header>
+					<p>I am Andre Chang, nice to meet you.</p>
+					<footer>
+						<a href="#one" class="button style2 down">More</a>
+					</footer>
+				</div>
+			</section>
+		
+		<!-- One -->
+			<section id="one" class="main style3 dark fullscreen">
+				<div class="content container small">
+					<header>
+						<h2>What I Do</h2>
+					</header>
+					<p>I am a compiler researcher at FWDNXT and a PhD candidate at Purdue University. My research interests are: compilers, hardware accelerators and deep learning. My goal is to contribute to the development of better AI systems. </p> 
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+		
+			
+		<!-- Work -->
+			<section id="two" class="main style3 dark fullscreen">
+				<div class="content container small">
+					<header>
+						<h2>My Work</h2>
+					</header>
+					<p>Currently, I am developing tools and compiler for custom hardware accelerator at <a href="http://fwdnxt.com/">FWDNXT</a>. <br> Some of my previous work are: <br>
+					<ul>
+					<li> &nbsp&nbsp&nbsp&nbsp Deep neural networks compiler for a trace-based accelerator <a href="https://dl.acm.org/citation.cfm?id=3211333"> [ref] </a> <a href="docs/cite1.pdf"> [pdf] </a> </li>
+					<li> &nbsp&nbsp&nbsp&nbsp Hardware accelerators for recurrent neural networks on FPGA <a href="https://ieeexplore.ieee.org/abstract/document/8050816/"> [ref] </a> <a href="docs/cite2.pdf"> [pdf] </a> </li>
+					<li> &nbsp&nbsp&nbsp&nbsp Ultrasound image processing hardware on FPGA <a href="http://www.canal6.com.br/cbeb/2014/artigos/cbeb2014_submission_193.pdf"> [ref] </a> <a href="docs/cite3.pdf"> [pdf] </a></li>
+					</ul> </p> 
+					<p> For more details, you can checkout my <a href="docs/resume.pdf">resume</a>. </p> 
+				</div>
+			</section>
+			
+		<!-- Footer -->
+			<footer id="footer">
+			
+				<!--
+				     Social Icons
+				     
+				     Use anything from here: http://fortawesome.github.io/Font-Awesome/cheatsheet/)
+				-->
+					<ul class="actions">
+						<li><a href="https://github.com/Andrechang" class="fa solo fa-github"><span>Github</span></a></li>
+						<li><a href="https://www.linkedin.com/in/andre-chang-9009bb97/" class="fa solo fa-linkedin"><span>LinkedIn</span></a></li>
+						<li><a href="https://www.facebook.com/axmChang" class="fa solo fa-facebook"><span>Facebook</span></a></li>
+					</ul>
+
+				<!-- Menu -->
+					<ul class="menu">
+						<li>&copy; Andre Chang</li>
+						<li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
+					</ul>
+			
+			</footer>
+
+	</body>
+</html>
