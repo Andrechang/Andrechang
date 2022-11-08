@@ -2,7 +2,7 @@
 import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
 const canvas = document.querySelector('canvas.webgl')
 
-const NUM_PAINTS = 12;
+const NUM_PAINTS = 8;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -45,8 +45,8 @@ scene.background = spaceTexture;
 //change painting when scroll
 function changePaint() {
   const t = document.body.getBoundingClientRect().top;
-  if (t < 0 && -t < NUM_PAINTS * 550) {
-    const idx = Math.floor(-t / 550); //around every 600p
+  if (t < 0 && -t < NUM_PAINTS * 240) {
+    const idx = Math.floor(-t / 240); //around every 600p
     painting.material = new THREE.MeshStandardMaterial({ map: paintTexture[idx] });
   }
 }
