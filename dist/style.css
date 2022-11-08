@@ -9,7 +9,7 @@ canvas {
 
 :root {
   --dark-bg: rgba(255, 255, 255, 0);
-  --spacing: 350px;
+  --spacing: 150px;
 
   font-family: brandon-grotesque, sans-serif;
   font-weight: 400;
@@ -65,7 +65,7 @@ header p {
 } */
 
 section {
-  grid-column: 2 / 5;
+  grid-column: 2 / span 9;
   padding: 1rem;
   background: var(--dark-bg);
   font-size: 1.25rem;
