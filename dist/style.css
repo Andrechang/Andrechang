@@ -110,8 +110,8 @@ footer {
   left: 0;
   top: 0;
   width: 100%;
-  background: rgb(0, 6, 85);
-  background: rgba(0, 6, 85, 0.95);
+  background: rgb(2, 2, 68);
+  background: rgba(2, 2, 68, 0.95);
   height: 3em;
   line-height: 3em;
   box-shadow: 0 0 0.15em 0 rgba(0, 0, 0, 0.1);
